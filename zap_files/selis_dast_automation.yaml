@@ -92,7 +92,7 @@ jobs:
     userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
   tests:
   - onFail: "ERROR"
-    statistic: "automation.spider.urls.added"
+    statistic: "spider.urls.total"
     site: "https://dev-itona.xyz"
     operator: ">="
     value: 2  # Reduced from 100 to 2
@@ -118,7 +118,7 @@ jobs:
   tests:
   - onFail: "ERROR"
     statistic: "spiderAjax.urls.added"
-    site: ""
+    site: "https://dev-itona.xyz"
     operator: ">="
     value: 2  # Reduced from 100 to 2
     name: "At least 2 URLs found"
