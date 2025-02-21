@@ -58,7 +58,7 @@ node {
     }
 
     stage("run automation") {
-        sh "/opt/zaproxy/zap.sh -port 9090 -dir ~/DAST_SCAN -cmd -autorun zap_files/selis_dast_automation.yaml"
+        sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -port 9090 -dir ~/DAST_SCAN -cmd -autorun zap_files/selis_dast_automation.yaml"
     }
     stage("publish report"){
         // time stamp when the script started not when finished 
