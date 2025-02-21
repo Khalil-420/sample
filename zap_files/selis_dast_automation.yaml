@@ -13,8 +13,8 @@ env:
         browserId: "chrome"
       verification:
         method: "poll"
-        loggedInRegex: "\Q 200 OK\E"
-        loggedOutRegex: "\Q 401 Unauthorized\E"
+        loggedInRegex: "\\Q 200 OK\\E"
+        loggedOutRegex: "\\Q 401 Unauthorized\\E"
         pollFrequency: 60
         pollUnits: "requests"
         pollUrl: "https://dev-itona.xyz/api/user/tokenAccessEnabled"
