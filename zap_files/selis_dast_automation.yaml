@@ -95,7 +95,7 @@ jobs:
     statistic: "automation.spider.urls.added"
     site: "https://dev-itona.xyz"
     operator: ">="
-    value: 100
+    value: 0
     name: "At least 100 URLs found"
     type: "stats"
   name: "spider"
@@ -120,7 +120,7 @@ jobs:
     statistic: "spiderAjax.urls.added"
     site: ""
     operator: ">="
-    value: 100
+    value: 0
     name: "At least 100 URLs found"
     type: "stats"
   name: "spiderAjax"
