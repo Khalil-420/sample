@@ -50,12 +50,12 @@ node {
     }
 
     // update and install all the addon 
-    stage("install & update all zap addon") {
+    /*stage("install & update all zap addon") {
         sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addoninstallall"
         sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addonupdate"
         // this is for validation purpose only , incase of failure refer to this file , crawler require some addon to be installed
         sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addonlist > addons.list"
-    }
+    }*/
 
     stage("run automation") {
         sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -port 9090 -dir ~/DAST_SCAN -cmd -autorun /opt/zaproxy/selis_dast_automation.yaml"
