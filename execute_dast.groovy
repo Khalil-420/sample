@@ -51,7 +51,7 @@ node {
     // update and install all the addon 
     stage("install & update all zap addon") {
         sh "/opt/zaproxy/zap.sh -cmd -addoninstallall"
-        sh "/opt/zaproxy/zap.sh -cmd --addonupdate"
+        sh "/opt/zaproxy/zap.sh -cmd -addonupdate"
         // this is for validation purpose only , incase of failure refer to this file , crawler require some addon to be installed
         sh "/opt/zaproxy/zap.sh -cmd -addonlist > addons.list"
     }
