@@ -44,17 +44,17 @@ node {
 
         // this will overwrite the existing file in zaproxy directory with the javafx compatible 
         sh "sudo rm -rf /opt/zaproxy"
-        sh "sudo mv zap_files/ZAP_2.16.0 /opt/zaproxy/"
+        sh "sudo mv zap_files /opt/zaproxy/"
         // this will all all user to execute which is required , google and firefox doesnt run as root user 
         sh "sudo chmod -R a+rx /opt/zaproxy"
     }
 
     // update and install all the addon 
     stage("install & update all zap addon") {
-        sh "/opt/zaproxy/zap.sh -cmd -addoninstallall"
-        sh "/opt/zaproxy/zap.sh -cmd -addonupdate"
+        sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addoninstallall"
+        sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addonupdate"
         // this is for validation purpose only , incase of failure refer to this file , crawler require some addon to be installed
-        sh "/opt/zaproxy/zap.sh -cmd -addonlist > addons.list"
+        sh "/opt/zaproxy/ZAP_2.16.0/zap.sh -cmd -addonlist > addons.list"
     }
 
     stage("run automation") {
