@@ -43,7 +43,7 @@ node {
                                 url: "https://github.com/Khalil-420/sample"]])
 
         // this will overwrite the existing file in zaproxy directory with the javafx compatible 
-        sh "mv zap_files/zap.sh /opt/zaproxy/"
+        sh "sudo mv zap_files/zap.sh /opt/zaproxy/"
         // this will all all user to execute which is required , google and firefox doesnt run as root user 
         sh "chmod a+rx /opt/zaproxy/zap.sh"
     }
