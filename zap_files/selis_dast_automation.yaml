@@ -89,14 +89,14 @@ jobs:
     processForm: true
     requestWaitTime: 0
     sendRefererHeader: true
-    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    userAgent: ""
   tests:
   - onFail: "ERROR"
-    statistic: "spider.urls.total"
+    statistic: "automation.spider.urls.added"
     site: "https://dev-itona.xyz"
     operator: ">="
-    value: 2  # Reduced from 100 to 2
-    name: "At least 2 URLs found"
+    value: 100
+    name: "At least 100 URLs found"
     type: "stats"
   name: "spider"
   type: "spider"
@@ -107,9 +107,9 @@ jobs:
     maxDuration: 60
     maxCrawlDepth: 10
     numberOfBrowsers: 10
-    maxCrawlStates: 1000  # Increased to allow more crawling
-    eventWait: 2000  # Increased for better crawling
-    reloadWait: 2000  # Increased for better crawling
+    maxCrawlStates: 0
+    eventWait: 500
+    reloadWait: 500
     clickDefaultElems: true
     clickElemsOnce: true
     randomInputs: true
@@ -118,10 +118,10 @@ jobs:
   tests:
   - onFail: "ERROR"
     statistic: "spiderAjax.urls.added"
-    site: "https://dev-itona.xyz"
+    site: ""
     operator: ">="
-    value: 2  # Reduced from 100 to 2
-    name: "At least 2 URLs found"
+    value: 100
+    name: "At least 100 URLs found"
     type: "stats"
   name: "spiderAjax"
   type: "spiderAjax"
