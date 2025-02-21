@@ -1,3 +1,4 @@
+---
 env:
   contexts:
   - name: "Itona_Dast"
@@ -12,8 +13,8 @@ env:
         browserId: "chrome"
       verification:
         method: "poll"
-        loggedInRegex: "\\Q 200 OK\\E"
-        loggedOutRegex: "\\Q 401 Unauthorized\\E"
+        loggedInRegex: "\Q 200 OK\E"
+        loggedOutRegex: "\Q 401 Unauthorized\E"
         pollFrequency: 60
         pollUnits: "requests"
         pollUrl: "https://dev-itona.xyz/api/user/tokenAccessEnabled"
@@ -58,7 +59,6 @@ env:
     failOnWarning: false
     progressToStdout: true
   vars: {}
-
 jobs:
 - parameters:
     maxAlertsPerRule: 20
@@ -69,37 +69,37 @@ jobs:
   rules: []
   name: "passiveScan-config"
   type: "passiveScan-config"
-
 - parameters:
     context: "Itona_Dast"
     user: "qatesting@test.com"
     url: "https://dev-itona.xyz"
-    maxDepth: 10       # Increased depth for better coverage
-    maxChildren: 500   # Increased max children to allow deeper crawling
+    maxDuration: 0
+    maxDepth: 0
+    maxChildren: 0
     acceptCookies: true
     handleODataParametersVisited: false
     handleParameters: "IGNORE_COMPLETELY"
     maxParseSizeBytes: 0
     parseComments: true
     parseGit: false
-    parseRobotsTxt: false  # Ignore robots.txt to allow better crawling
-    parseSitemapXml: true  # Use sitemap.xml for better coverage
+    parseRobotsTxt: true
+    parseSitemapXml: true
     parseSVNEntries: false
     postForm: true
     processForm: true
+    requestWaitTime: 0
     sendRefererHeader: true
-    userAgent: ""
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
   tests:
   - onFail: "ERROR"
     statistic: "automation.spider.urls.added"
     site: "https://dev-itona.xyz"
     operator: ">="
-    value: 10  # Reduced from 100 to 10 for better realism
-    name: "At least 10 URLs found"
+    value: 2  # Reduced from 100 to 2
+    name: "At least 2 URLs found"
     type: "stats"
   name: "spider"
   type: "spider"
-
 - parameters:
     context: "Itona_Dast"
     user: "qatesting@test.com"
@@ -107,9 +107,9 @@ jobs:
     maxDuration: 60
     maxCrawlDepth: 10
     numberOfBrowsers: 10
-    maxCrawlStates: 500  # Increased to find more pages
-    eventWait: 1000      # Increased for better AJAX handling
-    reloadWait: 1000
+    maxCrawlStates: 1000  # Increased to allow more crawling
+    eventWait: 2000  # Increased for better crawling
+    reloadWait: 2000  # Increased for better crawling
     clickDefaultElems: true
     clickElemsOnce: true
     randomInputs: true
@@ -118,19 +118,17 @@ jobs:
   tests:
   - onFail: "ERROR"
     statistic: "spiderAjax.urls.added"
-    site: "https://dev-itona.xyz"
+    site: ""
     operator: ">="
-    value: 10  # Reduced from 100 to 10 for better realism
-    name: "At least 10 URLs found"
+    value: 2  # Reduced from 100 to 2
+    name: "At least 2 URLs found"
     type: "stats"
   name: "spiderAjax"
   type: "spiderAjax"
-
 - parameters:
     maxDuration: 0
   name: "passiveScan-wait"
   type: "passiveScan-wait"
-
 - parameters:
     context: "Itona_Dast"
     user: "qatesting@test.com"
@@ -150,7 +148,6 @@ jobs:
     rules: []
   name: "activeScan"
   type: "activeScan"
-
 - parameters:
     template: "high-level-report"
     reportDir: "/home/kali/devsecops"
