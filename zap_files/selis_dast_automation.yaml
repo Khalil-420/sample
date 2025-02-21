@@ -126,15 +126,15 @@ jobs:
   name: "spiderAjax"
   type: "spiderAjax"
 - parameters:
-    maxDuration: 0
+    maxDuration: 2
   name: "passiveScan-wait"
   type: "passiveScan-wait"
 - parameters:
     context: "Itona_Dast"
     user: "qatesting@test.com"
     policy: ""
-    maxRuleDurationInMins: 0
-    maxScanDurationInMins: 0
+    maxRuleDurationInMins: 2
+    maxScanDurationInMins: 2
     addQueryParam: true
     delayInMs: 1000
     handleAntiCSRFTokens: true
@@ -149,12 +149,13 @@ jobs:
   name: "activeScan"
   type: "activeScan"
 - parameters:
+    maxScanDurationInMins: 5
     template: "high-level-report"
-    reportDir: "/home/kali/devsecops"
+    reportDir: "/opt/zaproxy/"
     reportFile: "Dynamic Analysis"
     reportTitle: "Itona Dast ZAP Report"
     reportDescription: "pentest automation"
-    displayReport: false
+    displayReport: true
   risks:
   - "info"
   - "low"
