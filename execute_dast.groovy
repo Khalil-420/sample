@@ -51,14 +51,14 @@ node {
     // update and install all the addon 
     stage("install & update all zap addon") {
         sh "pwd > pwdishere"
-        sh "zap.sh -cmd -addoninstallall"
-        sh "zap.sh -cmd --addonupdate"
+        sh "/opt/zaproxy/zap.sh -cmd -addoninstallall"
+        sh "/opt/zaproxy/zap.sh -cmd --addonupdate"
         // this is for validation purpose only , incase of failure refer to this file , crawler require some addon to be installed
-        sh "zap.sh -cmd -addonlist > addons.list"
+        sh "/opt/zaproxy/zap.sh -cmd -addonlist > addons.list"
     }
 
     stage("run automation") {
-        sh "zap.sh -port 9090 -dir ~/DAST_SCAN -cmd -autorun zap_files/selis_dast_automation.yaml"
+        sh "/opt/zaproxy/zap.sh -port 9090 -dir ~/DAST_SCAN -cmd -autorun zap_files/selis_dast_automation.yaml"
     }
     stage("publish report"){
         // time stamp when the script started not when finished 
